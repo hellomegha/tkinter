@@ -1,0 +1,36 @@
+import tkinter as tk
+
+MOVE_AMOUNT = 10
+
+def move_up(event):
+    canvas.move(rect_id, 0, -MOVE_AMOUNT)
+
+def move_down(event):
+    canvas.move(rect_id, 0, MOVE_AMOUNT)
+
+def move_right(event):
+    canvas.move(rect_id, MOVE_AMOUNT, 0)
+
+def move_left(event):
+    canvas.move(rect_id, -MOVE_AMOUNT, 0)
+
+root = tk.Tk()
+root.title("Moving Shape with Arrow Keys")
+root.geometry("840x500")
+
+
+canvas = tk.Canvas(root, width=400, height=400, bg="orange")
+canvas.pack()
+
+rect_id = canvas.create_rectangle(160, 120, 243, 180, fill="blue")
+
+
+root.bind("<Up>", move_up)
+root.bind("<Down>", move_down)
+root.bind("<Left>", move_left)
+root.bind("<Right>", move_right)
+
+
+canvas.focus_set()
+
+root.mainloop()
